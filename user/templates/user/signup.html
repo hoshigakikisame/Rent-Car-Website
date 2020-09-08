@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sign Up | Rental Mobil</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h1>Sign Up | Rental Mobil</h1>
+	<p style="color: red">{{message}}</p>
+	<form method="post">
+		{% csrf_token %}
+		Email : <input type="email" name="email"><br>
+		username : <input type="text" name="username"><br>
+		password : <input type="password" name="password"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
