@@ -83,7 +83,7 @@
           <div class="row">
             {% for mobil in mobil_all %}
             {% if forloop.counter|divisibleby:3 == 0%}
-              <br>
+            <br>
             {% endif %}
             <div class="col-6 col-md-6 col-lg-4 mb-3">
               <div class="card h-100 border-0">
@@ -98,7 +98,23 @@
                     <i>
                     {{mobil.harga}}</i>
                   </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
+                  {% if mobil.status == "Available" %}
+                    <p class="lead text-success">{{mobil.status}}</p>
+                  {% else %}
+                    <p class="lead text-danger">{{mobil.status}}</p>
+                  {% endif %}
+                  <div class="row">
+                    <div class="col">
+                      <a href="{% url 'sewa_mobil:detail' mobil.slug %}">
+                      <button type="button" class="btn btn-secondary">Detail</button>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="{% url 'sewa_mobil:pesan' mobil.slug %}">
+                        <button type="button" class="btn btn-primary">Book</button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

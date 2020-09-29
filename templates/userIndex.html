@@ -10,5 +10,14 @@
 	<h1>Dashboard</h1>
 	<h2>Welcome back {{user}}</h2>
 	<a href="{% url 'user:signout' %}">Sign Out</a><br>
+
+	{% for pesanan in jumlah_pesanan %}
+	<hr>
+		<h3>{{pesanan.nama}}</h3>
+		<h4>{{pesanan.plat}}</h4>
+		<img src="{{pesanan.gambar}}" alt="">
+		<p>{{pesanan.harga}}</p>
+		<hr>
+	{% endfor %}
 </body>
 </html>

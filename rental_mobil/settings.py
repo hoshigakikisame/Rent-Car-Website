@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sewa_mobil',
     'user',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
