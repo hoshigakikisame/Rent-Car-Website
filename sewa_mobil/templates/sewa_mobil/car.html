@@ -92,7 +92,7 @@
                 </div>
                 <div class="card-body text-center">
                   <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">{{mobil.nama}}</a>
+                    <a href="{% url 'sewa_mobil:detail' mobil.slug %}" class=" font-weight-bold text-dark text-uppercase small">{{mobil.nama}}</a>
                   </h4>
                   <h5 class="card-price small text-warning">
                     <i>
@@ -109,172 +109,25 @@
                       <button type="button" class="btn btn-secondary">Detail</button>
                       </a>
                     </div>
-                    <div class="col">
+                    {% if mobil.status == "Not Available" %}
+                        <div class="col">
+                        <button type="button" class="btn btn-primary disabled">Book</button>
+                    </div>
+                    {% else %}
+                        <div class="col">
                       <a href="{% url 'sewa_mobil:pesan' mobil.slug %}">
                         <button type="button" class="btn btn-primary">Book</button>
                       </a>
                     </div>
+                    {% endif %}
+                    
                   </div>
                 </div>
               </div>
             </div>
             {% endfor %}
           </div>
-          <div class="row">
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-0">
-                <div class="card-img-top">
-                  <img src="{% static "img/index.jpg" %}" class="img-fluid mx-auto d-block" alt="Card image cap">
-                </div>
-                <div class="card-body text-center">
-                  <h4 class="card-title">
-                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small">Audi A7</a>
-                  </h4>
-                  <h5 class="card-price small text-warning">
-                    <i>
-                    IDR.450.000</i>
-                  </h5>
-                  <button type="button" class="btn btn-primary">Book</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <div class="row sorting mb-5 mt-5">
             <div class="col-12">
               <a class="btn btn-light">

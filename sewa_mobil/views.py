@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Mobil, Pesanan
 import datetime
+from rental_mobil.views import index as home
 
 # Create your views here.
 def index(request):
@@ -51,13 +52,22 @@ def pesan(request, plat):
 			nama_user = request.user.username,
 			nama = mobil_dipilih.nama,
 			plat = mobil_dipilih.plat,
-			harga = mobil_dipilih.harga * int(request.POST['lama']),
+			harga = mobil_dipilih.harga,
 			gambar = mobil_dipilih.gambar.url,
 			tgl_pesan = datetime.datetime.now(),
 			lama = int(request.POST['lama']),
-			tgl_kembali = datetime.datetime.now() + datetime.timedelta(days=int(request.POST['lama']))
+			tgl_kembali = datetime.datetime.now() + datetime.timedelta(days=int(request.POST['lama'])),
+			denda = (mobil_dipilih.harga * int(request.POST['lama']) * 0.1),
+			total_bayar = mobil_dipilih.harga * int(request.POST['lama']),
+
 		) 
 
 		return redirect("http://localhost:8000")
 
 	return render(request, 'sewa_mobil/form_pemesanan.html', context)
+
+def batalPesan(request, plat):
+	pesanan = Pesanan.objects.get(plat=plat)
+	pesanan.delete()
+
+	return redirect(home)

@@ -48,10 +48,8 @@ class Pesanan(models.Model):
 	lama = models.IntegerField()
 	tgl_pesan = models.DateField()
 	tgl_kembali = models.DateField()
-
-	def denda(self):
-		if self.tgl_kembali > datetime.datetime.now().date():
-			self.harga += self.harga * 0.3
+	denda = models.IntegerField()
+	total_bayar = models.IntegerField(default=0)
 
 	def save(self, *args, **kwargs):
 		# self.tgl_kembali = self.tgl_pesan + datetime.timedelta(self.lama) 
