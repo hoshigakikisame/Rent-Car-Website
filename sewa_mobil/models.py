@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 import datetime
+from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Mobil(models.Model):
@@ -27,6 +29,8 @@ class Mobil(models.Model):
 	]
 
 	transmisi = models.CharField(max_length=10, default="Manual", choices=[('Auto', 'Auto'),('Manual', 'Manual')])
+	rating = models.IntegerField(blank=True, default=0)
+	ratinged_by = models.ManyToManyField(User, related_name='rating',blank=True)
 	status = models.CharField(max_length=20, choices=status_choices, default="Available")
 	slug = models.SlugField(blank=True, editable=False)
 

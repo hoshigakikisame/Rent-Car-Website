@@ -9,87 +9,69 @@
 </head>
 <body>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-	<h1>Dashboard</h1>
-	<h2>Welcome back {{user}}</h2>
-	<a href="{% url 'user:signout' %}">Sign Out</a><br>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <h1>Dashboard</h1>
+  <h2>Welcome back {{user}}</h2>
+  <a href="{% url 'user:signout' %}">Sign Out</a><br>
 
-	{% for pesanan in jumlah_pesanan %}
+  {% for pesanan in jumlah_pesanan %}
 
-	{# <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Mobil</th>
-                        <th class="text-center">Harga</th>
-                        <th class="text-center">Total</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{pesanan.gambar}} style="width: 72px; height: 72px;"> </a>
-                            <div class="media-body">
-                                <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
-                            </div>
-                        </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Batalkan Pesanan
-                        </button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> #}
-	<div class="card" style="float:left; width: 18rem;">
-  <img style="width: 285px; height: 200px; background-image: url({{pesanan.gambar}}); background-size: cover" src="" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{pesanan.nama}}</h5>
-    <p class="card-text" style="color: #666">{{pesanan.plat}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Total : Rp {{pesanan.total_bayar}}</li>
-    <li class="list-group-item">Waktu kembali : {{pesanan.tgl_kembali}}</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-  Batalkan
-</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Apakah anda yakin akan membatalkan pesanan?</p>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <a href="{% url 'sewa_mobil:batalPesan' pesanan.plat %}"><button type="button" class="btn btn-danger">Yakin</button></a>
-      </div>
+  <div class="card" style="float:left; width: 18rem;">
+    <img style="width: 285px; height: 200px; background-image: url({{pesanan.gambar.url}}); background-size: cover">
+    <div class="card-body">
+      <h5 class="card-title">{{pesanan.nama}}</h5>
+      <p class="card-text" style="color: #666">{{pesanan.plat}}</p>
     </div>
-  </div>
-</div>
-  </div>
-</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Total : Rp {{pesanan.total_bayar}}</li>
+      <li class="list-group-item">Waktu kembali : {{pesanan.tgl_kembali}}</li>
+      {% if hari_ini > pesanan.tgl_kembali %}
+      <li class="list-group-item">Denda : {{pesanan.denda}}</li>
+      {% endif %}
+
+      {% for mobil in seluruh_mobil|slice:":1" %}
+        <p>{{mobil.ratinged_by}}</p>
+      {% if request.user in mobil.ratinged_by %}
+
+      {% else %}
+      <form method="post" class="range-field">
+        {% csrf_token %}
+        <input type="hidden" name="plat_mobil" value="{{pesanan.plat}}">
+        <label for="customRange2">Rating</label>
+        <input type="range" class="custom-range" name="rating" min="0" max="5" id="customRange2">
+        <input type="submit" name="submit">
+      </form>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Batalkan
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Apakah anda yakin akan membatalkan pesanan?</p>
+            </div>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+             <a href="{% url 'sewa_mobil:batalPesan' pesanan.plat %}"><button type="button" class="btn btn-danger">Yakin</button></a>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 
 	<!-- <hr>
 		<h3>{{pesanan.nama}}</h3>
@@ -122,7 +104,7 @@
     </div>
   </div>
 </div>
-		<hr> -->
-	{% endfor %}
+<hr> -->
+{% endfor %}
 </body>
 </html>
